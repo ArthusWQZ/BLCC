@@ -21,14 +21,15 @@ end
 -- Repo config
 local repo = "ArthusWQZ/BLCC"
 local branch = "main"
-local files = {
-    "file1.lua",
-    "folder1/file2.lua",     
-    "folder2/subfolder/file3.lua" 
-}
+
+-- Retrieving the files from the configuration
+local file_list_url = "https://raw.githubusercontent.com/" .. repo .. "/" .. branch .. "/" .. "installation/" .. tostring(os.getComputerID()) .. ".json"
+local file_list_serialized = http.get(file_list_url)
+local files = textutils.unserialiseJSON(file_list_serialized)
 
 -- Download each file
 for _, file in ipairs(files) do
     local url = "https://raw.githubusercontent.com/" .. repo .. "/" .. branch .. "/" .. file
-    downloadFile(url, file)
+    print(url)
+    -- downloadFile(url, file)
 end
