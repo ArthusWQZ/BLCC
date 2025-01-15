@@ -24,12 +24,13 @@ local branch = "main"
 
 -- Retrieving the files from the configuration
 local file_list_url = "https://raw.githubusercontent.com/" .. repo .. "/" .. branch .. "/" .. "installation/" .. tostring(os.getComputerID()) .. ".json"
-local file_list_serialized = http.get(file_list_url)
+local response = http.get(file_list_url)
+local file_list_serialized = response.readAll()
+response.close()
 local files = textutils.unserialiseJSON(file_list_serialized)
 
 -- Download each file
 for _, file in ipairs(files) do
     local url = "https://raw.githubusercontent.com/" .. repo .. "/" .. branch .. "/" .. file
-    print(url)
-    -- downloadFile(url, file)
+    downloadFile(url, file)
 end
