@@ -1,4 +1,4 @@
-{
-    "0": "test.lua",
-    "1": "ok.lua"
-}
+[
+    "test.lua",
+    "ok.lua"
+]
