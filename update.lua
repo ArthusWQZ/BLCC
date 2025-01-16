@@ -52,7 +52,7 @@ end
 
 -- We then download the individual files
 local individual_files = getTableFromJSONUrl (GHRAW_URL .. tostring(os.getComputerID()) .. ".json")
-for _, file in ipairs(common_files) do
+for _, file in ipairs(individual_files) do
     local url = GHRAW_URL .. file
     downloadFile(url, file)
 end
