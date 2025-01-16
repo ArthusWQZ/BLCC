@@ -28,7 +28,9 @@ end
 
 -- THIS DOES NOT CHECK IF THE URL INDEED POINTS TO A JSON FILE
 local function getTableFromJSONUrl(url)
+    print("Accessing ".. url)
     local response = http.get(url)
+    if response == nil then return {} end
     local serialized = response.readAll()
     response.close()
     local table = textutils.unserialiseJSON(serialized)
