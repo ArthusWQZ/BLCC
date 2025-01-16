@@ -44,7 +44,6 @@ if fs.exists("startup.lua") then fs.delete("startup.lua") end
 
 local common_files = getTableFromJSONUrl(GHRAW_URL .. COMMON_FILES_LIST_PATH)
 for _, file in ipairs(common_files) do
-    if fs.exist(file) then fs.delete(file) end
     local url = GHRAW_URL .. file
     downloadFile(url, file)
 end
@@ -52,7 +51,6 @@ end
 -- We then download the individual files
 local individual_files = getTableFromJSONUrl (GHRAW_URL .. tostring(os.getComputerID()) .. ".json")
 for _, file in ipairs(common_files) do
-    if fs.exist(file) then fs.delete(file) end
     local url = GHRAW_URL .. file
     downloadFile(url, file)
 end
