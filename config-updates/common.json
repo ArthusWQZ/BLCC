@@ -1,3 +1,4 @@
 [
-    "startup.lua"
+    "startup.lua",
+    "common/boot.lua"
 ]
